@@ -1,0 +1,636 @@
+﻿<Window x:Class="DataBaseIndTask.CustomQueryBuilderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseIndTask"
+        mc:Ignorable="d"
+        Title="Custom Query Builder" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        Icon="pack://application:,,,/Resources/Start_icon.png"
+        Background="White"
+        WindowStyle="ThreeDBorderWindow"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="800" 
+        Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignNavigatilRailTabControl}"            
+            materialDesign:ColorZoneAssist.Mode="PrimaryMid"            
+            TabStripPlacement="Top"
+            Background="White" 
+            HorizontalContentAlignment="Center"
+            materialDesign:NavigationRailAssist.SelectionCornerRadius="10 10 10 10"
+            materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Grid.ColumnSpan="3">
+            <!--Fields-->
+            <TabItem Width="150">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                            Kind="TableLarge"
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center" />
+                        <TextBlock
+                              Text="Fields"
+                              HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TreeView
+                        x:Name="TreeViewSection"
+                        Grid.ColumnSpan="2"
+                        materialDesign:ThemeAssist.Theme="Light"
+                        Width="auto"
+                        MinWidth="120"
+                        HorizontalAlignment="Center"
+                        Panel.ZIndex="1">
+                        <!--Account-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Account"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="ID" IsChecked="{Binding Path = AccountTable.Account_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Login" IsChecked="{Binding Path = AccountTable.Account_login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Password" IsChecked="{Binding Path = AccountTable.Account_password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Nickname" IsChecked="{Binding Path = AccountTable.Account_nickname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Email" IsChecked="{Binding Path = AccountTable.Account_email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Country" IsChecked="{Binding Path = AccountTable.Account_country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Balance" IsChecked="{Binding Path = AccountTable.Account_balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Birthdate" IsChecked="{Binding Path = AccountTable.Account_birthdate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Role" IsChecked="{Binding Path = AccountTable.Account_role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Image" IsChecked="{Binding Path = AccountTable.Account_image, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <!--Game-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Game"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="ID" IsChecked="{Binding Path = GameTable.Game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Name" IsChecked="{Binding Path = GameTable.Game_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Description" IsChecked="{Binding Path = GameTable.Game_description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Genre" IsChecked="{Binding Path = GameTable.Game_genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Release date" IsChecked="{Binding Path = GameTable.Game_release_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Developer" IsChecked="{Binding Path = GameTable.Game_developer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Publisher" IsChecked="{Binding Path = GameTable.Game_publisher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Rating" IsChecked="{Binding Path = GameTable.Game_rating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Age limit" IsChecked="{Binding Path = GameTable.Game_agelimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Image" IsChecked="{Binding Path = GameTable.Game_image, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Store image" IsChecked="{Binding Path = GameTable.Game_storeimage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <!--Games_shop-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Games shop"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Game ID" IsChecked="{Binding Path = GamesShopTable.Game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Game price" IsChecked="{Binding Path = GamesShopTable.Game_price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>                            
+                        </TreeViewItem>
+                        <!--Report-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Report"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="ID" IsChecked="{Binding Path = ReportTable.Report_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Comment" IsChecked="{Binding Path = ReportTable.Report_comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Receive date" IsChecked="{Binding Path = ReportTable.Report_receive_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Sender ID" IsChecked="{Binding Path = ReportTable.Report_sender_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Receiver ID" IsChecked="{Binding Path = ReportTable.Report_receiver_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>                            
+                        </TreeViewItem>
+                        <!--Purchases-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Purchases"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchase ID" IsChecked="{Binding Path = PurchasesTable.Purchase_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchaser ID" IsChecked="{Binding Path = PurchasesTable.Purchaser_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchase game ID" IsChecked="{Binding Path = PurchasesTable.Purchase_game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchase game name" IsChecked="{Binding Path = PurchasesTable.Purchase_game_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchaser login" IsChecked="{Binding Path = PurchasesTable.Purchase_purchaser_login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchase price" IsChecked="{Binding Path = PurchasesTable.Purchase_price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Purchase date" IsChecked="{Binding Path = PurchasesTable.Purchase_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>                            
+                        </TreeViewItem>
+                        <!--Achievement-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Achievement"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="ID" IsChecked="{Binding Path = AchievementTable.Achievement_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Name" IsChecked="{Binding Path = AchievementTable.Achievement_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Description" IsChecked="{Binding Path = AchievementTable.Achievement_description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Game id" IsChecked="{Binding Path = AchievementTable.Achievement_game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Image" IsChecked="{Binding Path = AchievementTable.Achievement_image, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>                            
+                        </TreeViewItem>
+                        <!--Receive_achievements-->
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Receive Achievements"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Achievement ID" IsChecked="{Binding Path = ReceiveAchievementsTable.Achievement_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Account ID" IsChecked="{Binding Path = ReceiveAchievementsTable.Account_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <CheckBox Content="Receive achievement date" IsChecked="{Binding Path = ReceiveAchievementsTable.Receive_achievement_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>                            
+                        </TreeViewItem>
+                    </TreeView>
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="80"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource MaterialDesignFlatLightButton}"
+                        ToolTip="Select all fields"
+                        Content="All"
+                        Command="{Binding Path = ChooseAllCommand}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="80"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource MaterialDesignFlatLightButton}"
+                        ToolTip="Clear all fields"
+                        Content="Clear"
+                        Command="{Binding Path = ClearAllCommand}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                </Grid>
+            </TabItem>
+            <!--Conditions-->
+            <TabItem Width="150">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                            Kind="FormatListBulleted"
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center" />
+                        <TextBlock
+                              Text="Conditions"
+                              HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid
+                        x:Name="AchievementDataGrid"
+                        ItemsSource="{Binding Path = ConditionList}"
+                        SelectedValue="{Binding Path = SelectedCondition}"                        
+                        CanUserAddRows="False"
+                        Background="Azure"
+                        BorderBrush="black"
+                        Foreground="black"                        
+                        Panel.ZIndex="1"        
+                        Grid.Row="0"
+                        materialDesign:ThemeAssist.Theme="Light"
+                        Height="auto"
+                        SelectionMode="Single"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Stretch"
+                        AutoGenerateColumns="False"
+                        HeadersVisibility="All">
+                        <DataGrid.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Setter Property="Background" Value="LightGray" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF9CB1B3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderThickness" Value="0" />
+                                        <Setter Property="BorderBrush" Value="Transparent" />
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <!--Table-->
+                            <DataGridTemplateColumn
+                                Header="Table"     
+                                MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox
+                                            IsReadOnly="true"
+                                            Text="{Binding Table, Mode=OneWay}"                                                        
+                                            Foreground="Black">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                    </Style>
+                                </DataGridColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                            <!--Field-->
+                            <DataGridTemplateColumn
+                                Header="Field"     
+                                MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox                                                        
+                                            IsReadOnly="true"                                                      
+                                            Text="{Binding Field, Mode=OneWay}"
+                                            Foreground="Black">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Style>
+                                </DataGridColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                            <!--Criterion-->
+                            <DataGridTemplateColumn
+                                Header="Criterion"     
+                                MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox                                                        
+                                            IsReadOnly="true"                                                      
+                                            Text="{Binding Criterion, Mode=OneWay}"
+                                            Foreground="Black">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Style>
+                                </DataGridColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                            <!--Value-->
+                            <DataGridTemplateColumn
+                                Header="Value"     
+                                MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox                                                        
+                                            IsReadOnly="true"                                                      
+                                            Text="{Binding Value, Mode=OneWay}"
+                                            Foreground="Black">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Style>
+                                </DataGridColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                            <!--Link-->
+                            <DataGridTemplateColumn
+                                Header="Link"     
+                                MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox                                                        
+                                            IsReadOnly="true"                                                      
+                                            Text="{Binding Link, Mode=OneWay}"
+                                            Foreground="Black">
+                                        </TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Style>
+                                </DataGridColumn.HeaderStyle>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--Add-->
+                    <Button
+                        Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+                        Content="Add condition"    
+                        IsDefault = "true"
+                        IsTabStop="true"
+                        Grid.Row="1"                        
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        Height="46"
+                        VerticalAlignment="Stretch"  
+                        Margin="2"
+                        Background="Azure"  
+                        Command="{Binding Path = AddConditionCommand}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    </Button>
+                    <!--Delete-->
+                    <Button
+                        Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+                        Content="Delete condition"    
+                        IsDefault = "true"
+                        IsTabStop="true"
+                        Grid.Row="1"          
+                        Height="46"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"  
+                        Margin="2"
+                        Background="Azure"  
+                        Command="{Binding Path = DeleteConditionCommand}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    </Button>
+                </Grid>
+            </TabItem>
+            <!--Result-->
+            <TabItem Width="150">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                            Kind="Check"
+                            Width="24"
+                            Height="24"
+                            HorizontalAlignment="Center" />
+                        <TextBlock
+                              Text="Result"
+                              HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <DataGrid
+                    x:Name="ResultDataGrid"                                         
+                    CanUserAddRows="False"
+                    Background="Azure"              
+                    Foreground="Black"
+                    Panel.ZIndex="1"   
+                    Height="auto"
+                    IsReadOnly="true"
+                    SelectionMode="Single"
+                    materialDesign:ThemeAssist.Theme="Light"
+                    HorizontalAlignment="Stretch"
+                    AutoGenerateColumns="true" 
+                    HeadersVisibility="All">                   
+                    <DataGrid.Resources>
+                        <Style TargetType="ScrollBar">
+                            <Setter Property="Background" Value="LightGray" />
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF9CB1B3"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>                        
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGrid.Resources>                    
+                </DataGrid>
+                <!--<ListView
+                    x:Name="ResultListView"
+                    HorizontalAlignment="Center"
+                    materialDesign:ThemeAssist.Theme="Light">
+                </ListView>-->
+            </TabItem>
+        </TabControl>
+        <Button x:Name="buttonShowSQLQuery" 
+                Command="{Binding ShowSQLQueryCommand}"
+                Grid.Row="1" 
+                Margin="5 5 5 5"
+                Content="Show SQL Quary" 
+                Background="Azure" 
+                Panel.ZIndex="1"              
+                Height="auto"
+                Grid.Column="0"/>
+        <Button x:Name="buttonRunSQLQuery" 
+                Command="{Binding RunSQLQueryCommand}"
+                Grid.Row="1" 
+                Margin="5 5 5 5"
+                Content="Run SQL Query" 
+                Background="Azure" 
+                Panel.ZIndex="1"       
+                Height="auto"
+                Grid.Column="1"/>
+    </Grid>
+</Window>

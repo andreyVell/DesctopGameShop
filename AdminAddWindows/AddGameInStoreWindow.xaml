@@ -1,0 +1,64 @@
+﻿<Window x:Class="DataBaseIndTask.AddGameInStoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseIndTask"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Add new game in store"
+        Icon="pack://application:,,,/Resources/Start_icon.png"
+        Background="White"
+        WindowStyle="ThreeDBorderWindow"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="300" 
+        Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ComboBox
+            x:Name="GameNameComboBox"
+            Grid.Row="0"
+            TabIndex="0"
+            materialDesign:ThemeAssist.Theme="Light"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="175"
+            Background="Azure"              
+            materialDesign:HintAssist.Hint="Name"
+            ItemsSource="{Binding UnstoredGamesList}"                                                        
+            DisplayMemberPath="game_name"
+            SelectedValuePath="game_id"                         
+            SelectedValue="{Binding game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">            
+        </ComboBox>        
+        <TextBox
+            x:Name="PriceTextBox"
+            TabIndex="1"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Price"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            HorizontalAlignment="Center"
+            Grid.Row="1"/>        
+        <Button
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="250"
+            MinHeight="50"
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Add"            
+            IsTabStop="true"
+            x:Name ="ButtonAdd"
+            Background="Azure"
+            Command="{Binding AddGameInStoreCommand}"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+        </Button>
+    </Grid>
+</Window>

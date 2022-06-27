@@ -1,0 +1,85 @@
+﻿<Window x:Class="DataBaseIndTask.AddAchievementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseIndTask"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Add new achievement"
+        Icon="pack://application:,,,/Resources/Start_icon.png"
+        Background="White"
+        WindowStyle="ThreeDBorderWindow"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="400" 
+        Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>            
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--achievement_name-->
+        <TextBox
+            x:Name="NameTextBox"
+            TabIndex="0"
+            Text="{Binding achievement_name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Name"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="350"
+            TextWrapping="wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="0"/>
+        <!--achievement_description-->
+        <TextBox
+            x:Name="DescriptionTextBox"
+            TabIndex="1"
+            Text="{Binding achievement_description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Description"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="350"
+            TextWrapping="wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="1"/>
+        <!--achievement_game_id-->
+        <ComboBox
+            x:Name="GameNameComboBox"
+            Grid.Row="2"
+            TabIndex="2"
+            materialDesign:ThemeAssist.Theme="Light"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="175"
+            Background="Azure"              
+            materialDesign:HintAssist.Hint="Game name"
+            ItemsSource="{Binding GameList}"                                                        
+            DisplayMemberPath="game_name"
+            SelectedValuePath="game_id"                         
+            SelectedValue="{Binding achievement_game_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>                
+        <Button
+            Grid.Row="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="250"
+            MinHeight="50"
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Add"            
+            IsTabStop="true"
+            x:Name ="ButtonAdd"
+            Background="Azure"
+            Command="{Binding AddAchievementCommand}"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+        </Button>
+    </Grid>
+</Window>

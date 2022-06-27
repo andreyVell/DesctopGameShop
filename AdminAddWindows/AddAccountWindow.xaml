@@ -1,0 +1,161 @@
+﻿<Window 
+    x:Class="DataBaseIndTask.AddAccountWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:DataBaseIndTask"
+    mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+    Title="Add new account" 
+    Icon="pack://application:,,,/Resources/Start_icon.png"
+    Background="White"
+    WindowStyle="ThreeDBorderWindow"    
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    Height="600" 
+    Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox
+            x:Name="LoginTextBox"
+            TabIndex="0"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Login"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            HorizontalAlignment="Center"
+            Grid.Row="0"/>
+        <TextBox
+            x:Name="PasswordTextBox"
+            TabIndex="1"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Password"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            HorizontalAlignment="Center"
+            Grid.Row="1"/>  
+        <TextBox
+            x:Name="NicknameTextBox"
+            TabIndex="2"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Nickname"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            HorizontalAlignment="Center"
+            Grid.Row="2"/>
+        <DatePicker
+            materialDesign:HintAssist.Hint="Pick birth date" 
+            materialDesign:HintAssist.HelperText="Field is required" 
+            TabIndex="3" 
+            Background="Azure"
+            x:Name="BirthDatePicker" 
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="10 10 10 10"
+            MinWidth="175">
+            <DatePicker.Resources>
+                <Style                    
+                    x:Key="CustomCalendarDayButton"
+                    TargetType="CalendarDayButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="LightSkyBlue" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                        Value="Black" />
+                </Style>
+                <Style
+                    x:Key="CustomCalendarButton"
+                    TargetType="CalendarButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="Azure" />
+                    <Setter
+                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                    Value="Black" />
+                </Style>
+                <Style
+                      x:Key="CustomCalendar"
+                      TargetType="{x:Type Calendar}"
+                      BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                    <Setter
+                        Property="Background"
+                        Value="White" />
+                    <Setter
+                        Property="Foreground"
+                        Value="Black" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderBackground"
+                        Value="Azure" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderForeground"
+                        Value="Black" />
+                    <Setter
+                        Property="CalendarDayButtonStyle"
+                        Value="{StaticResource CustomCalendarDayButton}" />
+                    <Setter
+                    Property="CalendarButtonStyle"
+                    Value="{StaticResource CustomCalendarButton}" />
+                </Style>
+                <Style
+                      TargetType="DatePicker"                       
+                      BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                    <Setter
+                        Property="CalendarStyle"
+                        Value="{StaticResource CustomCalendar}" />
+                </Style>
+                <Style
+                    TargetType="TextBlock">
+                    <Setter
+                        Property="Background"
+                        Value="Azure" />
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <ComboBox
+            x:Name="RoleComboBox"
+            Grid.Row="4"
+            materialDesign:ThemeAssist.Theme="Light"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="175"
+            Background="Azure"              
+            materialDesign:HintAssist.Hint="Role">
+            <ComboBoxItem Content="Admin" Foreground="Black">                
+            </ComboBoxItem>
+            <ComboBoxItem Content="Player" Foreground="Black">                
+            </ComboBoxItem>            
+        </ComboBox>
+        <Button
+            Grid.Row="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="250"
+            MinHeight="50"
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Add"            
+            IsTabStop="true"
+            x:Name ="ButtonAdd"
+            Background="Azure"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+            Click="ButtonAdd_Click">            
+        </Button>
+    </Grid>
+</Window>

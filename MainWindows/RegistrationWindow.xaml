@@ -1,0 +1,136 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseIndTask"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        x:Class="DataBaseIndTask.RegistrationWindow"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Resources/Start_icon.png"
+        Background="White"
+        WindowStyle="ThreeDBorderWindow"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Please Sign In" Height="700" Width="400">
+    <Grid>
+        <Image Margin="40,-30,40,570" Source="pack://application:,,,/Resources/Logo_main.png"/>
+        <TextBox
+            x:Name="LoginTextBox"
+            TabIndex="0"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Login"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" Margin="50,101,50,515" Text="{Binding Name}"/>
+        <PasswordBox
+            Background="Azure"
+            x:Name="PasswordTextBox"
+            TabIndex="1"
+            materialDesign:HintAssist.Hint="Password"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            materialDesign:HintAssist.HelperText="At least 3 characters" Margin="50,182,50,434"
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+        <PasswordBox
+            Background="Azure"
+            x:Name="PasswordRepeatTextBox"
+            TabIndex="2"
+            materialDesign:HintAssist.Hint="Repeat Password"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            materialDesign:HintAssist.HelperText="At least 3 characters" Margin="50,252,50,364"
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+        <TextBox
+            x:Name="NicknameTextBox"
+            TabIndex="3"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Nickname"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" Margin="50,326,50,290"/>
+        <DatePicker
+            materialDesign:HintAssist.Hint="Pick your birth date" 
+            materialDesign:HintAssist.HelperText="Field is required" 
+            TabIndex="4" 
+            x:Name="BirthDatePicker" 
+            Margin="50,397,50,219" 
+            Height="55">
+            <DatePicker.Resources>
+                <Style                    
+                    x:Key="CustomCalendarDayButton"
+                    TargetType="CalendarDayButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="LightSkyBlue" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                        Value="Black" />
+                </Style>
+                <Style
+                    x:Key="CustomCalendarButton"
+                    TargetType="CalendarButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="Azure" />
+                    <Setter
+                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                    Value="Black" />
+                </Style>
+                <Style
+                      x:Key="CustomCalendar"
+                      TargetType="{x:Type Calendar}"
+                      BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                    <Setter
+                        Property="Background"
+                        Value="White" />
+                    <Setter
+                        Property="Foreground"
+                        Value="Black" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderBackground"
+                        Value="Azure" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderForeground"
+                        Value="Black" />
+                    <Setter
+                        Property="CalendarDayButtonStyle"
+                        Value="{StaticResource CustomCalendarDayButton}" />
+                    <Setter
+                    Property="CalendarButtonStyle"
+                    Value="{StaticResource CustomCalendarButton}" />
+                </Style>
+                <Style
+                      TargetType="DatePicker"                       
+                      BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                    <Setter
+                        Property="CalendarStyle"
+                        Value="{StaticResource CustomCalendar}" />
+                </Style>
+                <Style
+                    TargetType="TextBlock">
+                    <Setter
+                        Property="Background"
+                        Value="Azure" />
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Button
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Back to log in"    
+            IsDefault = "true"
+            IsTabStop="true"
+            x:Name ="ButtonBackLogin"
+            Background="Azure"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+            Margin="50,570,50,26" 
+            Height="Auto" Click="ButtonBackLogin_Click"/>
+        <Button
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Sign in"            
+            IsTabStop="true"
+            x:Name ="ButtonRegisterComplete"
+            Background="Azure"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+            Margin="50,481,50,115" 
+            Height="Auto" Click="ButtonRegisterComplete_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,206 @@
+﻿<Window x:Class="DataBaseIndTask.AddGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseIndTask"
+        mc:Ignorable="d"
+        Title="Add new game"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
+        Icon="pack://application:,,,/Resources/Start_icon.png"
+        Background="White"
+        WindowStyle="ThreeDBorderWindow"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="800" 
+        Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox
+            x:Name="NameGameTextBox"
+            TabIndex="0"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Name"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="0"/>
+        <TextBox
+            x:Name="DescriptionGameTextBox"
+            TabIndex="1"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Description"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is not required" 
+            VerticalAlignment="Center"            
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="1"/>
+        <TextBox
+            x:Name="GenreGameTextBox"
+            TabIndex="2"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Genre"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="2"/>
+        <DatePicker
+            materialDesign:HintAssist.Hint="Pick release date" 
+            materialDesign:HintAssist.HelperText="Field is required" 
+            TabIndex="3" 
+            Background="Azure"
+            x:Name="ReleaseDateGamePicker" 
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="10 10 10 10"
+            MinWidth="175">
+            <DatePicker.Resources>
+                <Style                    
+                    x:Key="CustomCalendarDayButton"
+                    TargetType="CalendarDayButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="LightSkyBlue" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                        Value="Black" />
+                </Style>
+                <Style
+                    x:Key="CustomCalendarButton"
+                    TargetType="CalendarButton"
+                    BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                    <Setter
+                        Property="materialDesign:CalendarAssist.SelectionColor"
+                        Value="Azure" />
+                    <Setter
+                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                    Value="Black" />
+                </Style>
+                <Style
+                      x:Key="CustomCalendar"
+                      TargetType="{x:Type Calendar}"
+                      BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+                    <Setter
+                        Property="Background"
+                        Value="White" />
+                    <Setter
+                        Property="Foreground"
+                        Value="Black" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderBackground"
+                        Value="Azure" />
+                    <Setter
+                        Property="materialDesign:CalendarAssist.HeaderForeground"
+                        Value="Black" />
+                    <Setter
+                        Property="CalendarDayButtonStyle"
+                        Value="{StaticResource CustomCalendarDayButton}" />
+                    <Setter
+                    Property="CalendarButtonStyle"
+                    Value="{StaticResource CustomCalendarButton}" />
+                </Style>
+                <Style
+                      TargetType="DatePicker"                       
+                      BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                    <Setter
+                        Property="CalendarStyle"
+                        Value="{StaticResource CustomCalendar}" />
+                </Style>
+                <Style
+                    TargetType="TextBlock">
+                    <Setter
+                        Property="Background"
+                        Value="Azure" />
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBox
+            x:Name="DeveloperGameTextBox"
+            TabIndex="4"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Developer"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="4"/>
+        <TextBox
+            x:Name="PublisherGameTextBox"
+            TabIndex="5"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Publisher"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="5"/>
+        <TextBox
+            x:Name="RatingGameTextBox"
+            TabIndex="6"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Rating"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="6"/>
+        <TextBox
+            x:Name="AgelimitGameTextBox"
+            TabIndex="7"
+            Background="Azure"
+            materialDesign:HintAssist.Hint="Age limit"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            materialDesign:HintAssist.HelperText="Field is required" 
+            VerticalAlignment="Center"
+            MinWidth="175"
+            MaxWidth="550"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.Row="7"/>
+        <Button
+            Grid.Row="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="250"
+            MinHeight="50"
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"            
+            Content="Add"            
+            IsTabStop="true"
+            x:Name ="ButtonAdd"
+            Background="Azure"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="ButtonAdd_Click">
+        </Button>
+    </Grid>
+</Window>
